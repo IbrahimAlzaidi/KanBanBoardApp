@@ -6,16 +6,16 @@ import com.example.kanbanboardapp.model.entity.Task
 interface TaskDao {
 
     @Insert
-    fun insertUser(task: Task)
+    fun insertTask(task: Task)
 
     @Update
-    fun updateUser(task: Task)
+    fun updateTask(task: Task)
 
     @Delete
-    fun deleteUser(task: Task)
+    fun deleteTask(task: Task)
 
     @Query("Select * from tbl_task")
-    fun getAllUsers(): List<Task>
+    fun getAllTask(): List<Task>
 
 
 }
