@@ -24,7 +24,7 @@ abstract class KanBanDatabase : RoomDatabase() {
             return instance ?: synchronized(this) { buildDatabase(context).also { instance = it } }
         }
 
-        fun buildDatabase(context: Context): KanBanDatabase {
+        private fun buildDatabase(context: Context): KanBanDatabase {
             return Room.databaseBuilder(context, KanBanDatabase::class.java, DATABASE_NAME).build()
         }
     }
