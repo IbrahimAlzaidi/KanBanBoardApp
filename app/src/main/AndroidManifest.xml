@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KanBanBoardApp">
         <activity
-            android:name=".ui.HomeActivity"
+            android:name=".ui.homeActivity.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

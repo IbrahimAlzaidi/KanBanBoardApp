@@ -1,11 +1,8 @@
 package com.example.kanbanboardapp.model.dao
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.kanbanboardapp.model.entity.Task
-
+@Dao
 interface TaskDao {
 
     @Insert
