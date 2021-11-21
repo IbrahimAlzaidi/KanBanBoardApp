@@ -41,7 +41,7 @@ abstract class BaseAdapter<T>(
     override fun getItemViewType(position: Int) = position
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setItems(view: RecyclerView, newItems: List<T>, position: Int? = null) {
+    fun setItems(view: RecyclerView, newItems: List<T>) {
         val diffUtilResult = DiffUtil.calculateDiff(
             DiffUtilAdapter(items, newItems) { oldItemList, newItemList ->
                 areItemSame(
@@ -52,9 +52,6 @@ abstract class BaseAdapter<T>(
         )
         items = newItems
         diffUtilResult.dispatchUpdatesTo(this)
-        if (position != null) {
-            view.smoothScrollToPosition(position)
-        }
     }
 
     open fun areItemSame(oldItem: T, newItem: T): Boolean {
