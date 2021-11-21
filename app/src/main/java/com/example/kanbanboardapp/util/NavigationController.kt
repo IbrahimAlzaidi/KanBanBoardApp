@@ -1,4 +1,4 @@
-package com.example.footballapp.util
+package com.example.kanbanboardapp.util
 
 import androidx.navigation.NavDirections
 

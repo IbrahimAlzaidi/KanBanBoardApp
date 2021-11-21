@@ -15,8 +15,8 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
-import com.example.footballapp.util.NavigationController
-import com.example.footballapp.util.ViewModelFactory
+import com.example.kanbanboardapp.util.NavigationController
+import com.example.kanbanboardapp.util.ViewModelFactory
 import com.example.kanbanboardapp.BR
 import com.example.kanbanboardapp.util.Event
 

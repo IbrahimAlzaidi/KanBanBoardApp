@@ -1,4 +1,4 @@
-package com.example.footballapp.util
+package com.example.kanbanboardapp.util
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -17,5 +17,3 @@ class ViewModelFactory : ViewModelProvider.NewInstanceFactory() {
         val listOfViewModels = mutableListOf<Class<*>>()
     }
 }
-
-
