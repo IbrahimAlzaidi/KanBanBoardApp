@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kanbanboardapp.BR
 import com.example.kanbanboardapp.util.DiffUtilAdapter
+import com.example.kanbanboardapp.util.OnClickListener
 
 
 abstract class BaseAdapter<T>(
     private var items: List<T>,
+    private var listener: OnClickListener,
     private val layoutId: Int,
 ) : RecyclerView.Adapter<BaseAdapter.BaseViewHolder>() {
 
@@ -31,8 +33,8 @@ abstract class BaseAdapter<T>(
         when (holder) {
             is ItemViewHolder -> {
                 holder.binding.apply {
-//                    setVariable(BR.viewModel,current)
-//                    setVariable(BR.listener, listener)
+                    setVariable(BR.item,current)
+                    setVariable(BR.listener,current)
                 }
             }
         }

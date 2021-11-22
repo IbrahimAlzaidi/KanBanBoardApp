@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.kanbanboardapp.model.entity.Task" />
+
+        <variable
+            name="listener"
+            type="com.example.kanbanboardapp.util.OnClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/taskHolder"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/taskTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:elevation="4dp"
+            android:textSize="18sp"
+            android:text="@{item.task_title}"
+            android:textColor="@color/black"
+            tools:text="Here text title display"
+            app:layout_constraintTop_toTopOf="@id/taskHolder"
+            app:layout_constraintStart_toStartOf="@id/taskHolder"
+            app:layout_constraintEnd_toEndOf="@id/taskHolder"/>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="@id/taskHolder"
+            app:layout_constraintStart_toStartOf="@id/taskHolder"
+            app:layout_constraintTop_toBottomOf="@id/taskTitle" />
+
+        <TextView
+            android:id="@+id/taskStartDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:text="@{item.task_startDate.toString()}"
+            tools:text="task Start Data"
+            app:layout_constraintBottom_toTopOf="@id/taskEndDate"
+            app:layout_constraintStart_toStartOf="@id/taskEndDate"
+            app:layout_constraintEnd_toEndOf="@id/taskEndDate"
+
+            />
+        <TextView
+            android:id="@+id/taskEndDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/taskHolder"
+            app:layout_constraintStart_toStartOf="@id/taskHolder"
+            app:layout_constraintBottom_toBottomOf="@id/taskHolder"
+            android:elevation="4dp"
+            android:text="@{item.task_endDate.toString()}"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            tools:text="task End Data"
+            />
+
+        <TextView
+            android:id="@+id/taskName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/taskHolder"
+            app:layout_constraintTop_toBottomOf="@id/view"
+            android:elevation="4dp"
+            android:text="@{item.task_name}"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            tools:text="Task Name"
+            />
+
+        <TextView
+            android:id="@+id/taskDisc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:text="@{item.task_description}"
+            app:layout_constraintEnd_toEndOf="@id/taskHolder"
+            app:layout_constraintStart_toStartOf="@id/taskHolder"
+            app:layout_constraintTop_toBottomOf="@id/taskName"
+            tools:text="Task Description" />
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:onClick="@{()->listener.onClickItem(item.task_id)}"
+            app:layout_constraintEnd_toEndOf="@id/taskHolder"
+            app:layout_constraintTop_toTopOf="@id/taskHolder"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
