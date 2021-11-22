@@ -3,6 +3,7 @@ package com.example.kanbanboardapp.model.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
 @Entity(tableName = "tbl_task")
 data class Task(
@@ -12,6 +13,6 @@ data class Task(
     @ColumnInfo(name = "description") val task_description: String,
     @ColumnInfo(name = "type") val task_type : String,
     @ColumnInfo(name = "stats") val task_stats : Boolean,
-    @ColumnInfo(name = "startDate") val task_startDate : String,
-    @ColumnInfo(name = "endDate") val task_endDate : String,
+    @ColumnInfo(name = "startDate") val task_startDate : Date,
+    @ColumnInfo(name = "endDate") val task_endDate : Date,
 )

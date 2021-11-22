@@ -4,18 +4,21 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.kanbanboardapp.model.dao.TaskDao
 import com.example.kanbanboardapp.model.dao.UserDao
+import com.example.kanbanboardapp.model.dataBase.Converter
 import com.example.kanbanboardapp.model.entity.Task
 import com.example.kanbanboardapp.model.entity.User
+import com.example.kanbanboardapp.util.Constant.DATABASE_NAME
 
 @Database(entities = [User::class, Task::class], version = 1)
+@TypeConverters(Converter::class)
 abstract class KanBanDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun taskDao(): TaskDao
 
     companion object {
-        private const val DATABASE_NAME = "KanBanDatabase"
 
         @Volatile
         private var instance: KanBanDatabase? = null
