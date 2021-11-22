@@ -18,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.kanbanboardapp.util.NavigationController
 import com.example.kanbanboardapp.util.ViewModelFactory
 import com.example.kanbanboardapp.BR
+import com.example.kanbanboardapp.util.DependencyInjection
 import com.example.kanbanboardapp.util.Event
 
 abstract class BaseFragment<VDB : ViewDataBinding, VM : BaseViewModel>(
@@ -28,6 +29,7 @@ abstract class BaseFragment<VDB : ViewDataBinding, VM : BaseViewModel>(
     private val _navigationLiveData = MutableLiveData<Event<NavigationController>>()
     private val navigationLiveData: LiveData<Event<NavigationController>> = _navigationLiveData
 
+    lateinit var viewModelFactory : ViewModelFactory
     private lateinit var _binding: VDB
     protected val binding: VDB
         get() = _binding
@@ -42,8 +44,8 @@ abstract class BaseFragment<VDB : ViewDataBinding, VM : BaseViewModel>(
         savedInstanceState: Bundle?,
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
-        ViewModelFactory.listOfViewModels.add(getViewModel())
-        _viewModel = ViewModelProvider(this, ViewModelFactory()).get(getViewModel())
+        viewModelFactory = DependencyInjection.provideViewModelFactory(activity)
+        _viewModel = ViewModelProvider(this, viewModelFactory).get(getViewModel())
         _binding.apply {
             lifecycleOwner = this@BaseFragment.viewLifecycleOwner
             setVariable(BR.viewModel, _viewModel)
