@@ -27,7 +27,7 @@ class Repository(private val dateSource: KanBanDatabase) : TaskDao , UserDao {
     }
 
     override fun taskFilter(contentFilter: String): Single<List<Task>> {
-        return dateSource.taskDao().taskFilter(contentFilter)
+        return dateSource.taskDao().taskFilter(contentFilter = contentFilter)
     }
 
     override fun insertUser(user: User): Completable {

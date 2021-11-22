@@ -1,8 +1,10 @@
 package com.example.kanbanboardapp.ui.home
 
+import android.util.Log
 import com.example.kanbanboardapp.R
 import com.example.kanbanboardapp.databinding.FragmentHomeBinding
 import com.example.kanbanboardapp.ui.base.BaseFragment
+import com.example.kanbanboardapp.util.Constant.TAG
 import com.example.kanbanboardapp.util.OnClickListener
 
 class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(R.layout.fragment_home) , OnClickListener{
@@ -15,7 +17,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(R.layout.fr
     }
 
     override fun onClickItem(itemId: Long) {
-        //navigate and trans the task Id
+        Log.i(TAG, "onClickItem: $itemId")
     }
 
 }
