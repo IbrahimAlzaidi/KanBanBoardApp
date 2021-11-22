@@ -8,14 +8,10 @@ import com.example.kanbanboardapp.model.entity.Task
 import com.example.kanbanboardapp.ui.base.BaseViewModel
 import com.example.kanbanboardapp.util.Constant
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
-import kotlin.random.Random
 
 class HomeViewModel(private val contentDataSource: Repository) : BaseViewModel() {
-
-    private val compositeDisposable = CompositeDisposable()
 
     val taskTitle = MutableLiveData<String>()
     val taskDescription = MutableLiveData<String>()
@@ -30,14 +26,12 @@ class HomeViewModel(private val contentDataSource: Repository) : BaseViewModel()
     }
 
     private fun isValid(): Boolean {
-        if (taskTitle.value.toString().trim().isNullOrEmpty() && taskDescription.value.toString().trim()
-                .isNullOrEmpty()
-        ){return false}
-        return true
+        return (taskName.value.toString().trim().isEmpty() ||
+                taskDescription.value.toString().trim().isEmpty())
     }
 
     fun checkTask() {
-        if (isValid()) {
+        if (!isValid()) {
             insertTask()
         }
     }
@@ -47,14 +41,13 @@ class HomeViewModel(private val contentDataSource: Repository) : BaseViewModel()
             compositeDisposable.add(
                 contentDataSource.insertTask(
                     Task(
-                        Random.nextLong(),
                         it.trim(),
                         task_title = taskTitle.value.toString().trim(),
                         task_description = taskDescription.value.toString().trim(),
                         task_type = taskType.value.toString().trim(),
-                        true,
+                        task_stats = true,
                         task_startDate = Date(),
-                        task_endDate = Date()
+                        task_endDate = Date(),
                     )
                 )
                     .subscribeOn(Schedulers.io())
@@ -65,7 +58,6 @@ class HomeViewModel(private val contentDataSource: Repository) : BaseViewModel()
                     )
             )
         }
-
     }
 
     private fun getAllTask() {
@@ -88,10 +80,5 @@ class HomeViewModel(private val contentDataSource: Repository) : BaseViewModel()
 
     private fun onGetAllTask(listOfTask: List<Task>) {
         _tasks.postValue(listOfTask)
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.clear()
     }
 }

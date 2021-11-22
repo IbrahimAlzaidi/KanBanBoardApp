@@ -19,7 +19,6 @@ abstract class KanBanDatabase : RoomDatabase() {
     abstract fun taskDao(): TaskDao
 
     companion object {
-
         @Volatile
         private var instance: KanBanDatabase? = null
 

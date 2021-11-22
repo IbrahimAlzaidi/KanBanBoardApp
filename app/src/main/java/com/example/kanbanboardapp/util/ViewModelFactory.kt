@@ -12,6 +12,6 @@ class ViewModelFactory(private val contentDataSource: Repository) :
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             return HomeViewModel(contentDataSource) as T
         }
-        throw IllegalArgumentException("Unknown viewmodel")
+        throw IllegalArgumentException("Unknown viewModel")
     }
 }

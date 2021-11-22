@@ -17,6 +17,6 @@ interface UserDao {
     @Delete
     fun deleteUser(user: User) : Completable
 
-    @Query("Select * from tbl_user")
+    @Query("Select * from TABLE_USER")
     fun getAllUsers(): Observable<List<User>>
 }

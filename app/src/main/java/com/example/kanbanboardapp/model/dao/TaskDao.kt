@@ -18,10 +18,9 @@ interface TaskDao {
     @Delete
     fun deleteTask(task: Task) : Completable
 
-    @Query("Select * from tbl_task ORDER BY task_id DESC")
+    @Query("Select * from TABLE_TASK ORDER BY task_id DESC")
     fun getAllTask(): Observable<List<Task>>
 
-    @Query("Select * from tbl_task WHERE name LIKE :contentFilter ORDER BY task_id DESC")
+    @Query("Select * from TABLE_TASK WHERE name LIKE :contentFilter ORDER BY task_id DESC")
     fun taskFilter(contentFilter : String): Single<List<Task>>
-
 }

@@ -10,6 +10,7 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 
 class Repository(private val dateSource: KanBanDatabase) : TaskDao , UserDao {
+
     override fun insertTask(task: Task): Completable {
         return dateSource.taskDao().insertTask(task = task)
     }

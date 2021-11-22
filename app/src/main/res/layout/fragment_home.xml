@@ -85,6 +85,5 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:listitem="@layout/task_item"/>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
