@@ -2,18 +2,16 @@ package com.example.kanbanboardapp.util
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.kanbanboardapp.model.dataBase.Repository
+import com.example.kanbanboardapp.ui.home.HomeViewModel
+import java.lang.IllegalArgumentException
 
-class ViewModelFactory : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory(private val contentDataSource: Repository) :
+    ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        listOfViewModels.forEach { viewModelClass ->
-            if (modelClass.isAssignableFrom(viewModelClass)) {
-                return viewModelClass.newInstance() as T
-            }
+        if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+            return HomeViewModel(contentDataSource) as T
         }
-        throw IllegalArgumentException("View Model Class Not Found")
-    }
-
-    companion object {
-        val listOfViewModels = mutableListOf<Class<*>>()
+        throw IllegalArgumentException("Unknown viewmodel")
     }
 }
