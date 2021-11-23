@@ -43,7 +43,7 @@ abstract class BaseFragment<VDB : ViewDataBinding, VM : BaseViewModel>(
         savedInstanceState: Bundle?,
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
-        val viewModelFactory = DependencyInjection.provideViewModelFactory(context)
+        val viewModelFactory = DependencyInjection.provideViewModelFactory(activity)
         _viewModel = ViewModelProvider(this, viewModelFactory).get(getViewModel())
         _binding.apply {
             lifecycleOwner = this@BaseFragment.viewLifecycleOwner
