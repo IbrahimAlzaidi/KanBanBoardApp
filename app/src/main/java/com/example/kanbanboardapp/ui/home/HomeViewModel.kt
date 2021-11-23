@@ -18,8 +18,8 @@ class HomeViewModel(private val contentDataSource: Repository) : BaseViewModel()
     val taskType = MutableLiveData<String>()
     val taskName = MutableLiveData<String>()
 
-    private val _tasks = MutableLiveData<List<Task>>()
-    val task: LiveData<List<Task>> = _tasks
+    private val _tasks = MutableLiveData<List<Task>?>()
+    val task: LiveData<List<Task>?> = _tasks
 
     init {
         getAllTask()
@@ -78,7 +78,9 @@ class HomeViewModel(private val contentDataSource: Repository) : BaseViewModel()
         Log.e(Constant.TAG, "Insert Error : ${error.message}")
     }
 
-    private fun onGetAllTask(listOfTask: List<Task>) {
+    private fun onGetAllTask(listOfTask: List<Task>?) {
+        if (listOfTask != null){
         _tasks.postValue(listOfTask)
+        }
     }
 }

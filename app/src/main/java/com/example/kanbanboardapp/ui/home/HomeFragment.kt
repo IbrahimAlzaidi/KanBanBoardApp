@@ -19,5 +19,4 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(R.layout.fr
     override fun onClickItem(itemId: Long) {
         Log.i(TAG, "onClickItem: $itemId")
     }
-
 }
