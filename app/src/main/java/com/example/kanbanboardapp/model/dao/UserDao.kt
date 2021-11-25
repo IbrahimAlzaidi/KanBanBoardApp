@@ -7,15 +7,14 @@ import io.reactivex.rxjava3.core.Observable
 
 @Dao
 interface UserDao {
-
-    @Insert
-    fun insertUser(user: User) : Completable
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertUser(task: User) : Completable
 
     @Update
-    fun updateUser(user: User) : Completable
+    fun updateUser(task: User) : Completable
 
     @Delete
-    fun deleteUser(user: User) : Completable
+    fun deleteUser(task: User) : Completable
 
     @Query("Select * from TABLE_USER")
     fun getAllUsers(): Observable<List<User>>

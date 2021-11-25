@@ -1,22 +1,32 @@
 package com.example.kanbanboardapp.ui.home
 
-import android.util.Log
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
 import com.example.kanbanboardapp.R
 import com.example.kanbanboardapp.databinding.FragmentHomeBinding
 import com.example.kanbanboardapp.ui.base.BaseFragment
-import com.example.kanbanboardapp.util.Constant.TAG
-import com.example.kanbanboardapp.util.OnClickListener
+import com.example.kanbanboardapp.ui.home.done.DoneFragment
+import com.example.kanbanboardapp.ui.home.inProgress.InProgressFragment
+import com.example.kanbanboardapp.ui.home.toDo.ToDoFragment
+import com.example.kanbanboardapp.util.ViewPager
+import com.example.kanbanboardapp.util.ViewPagerTransitions
 
-class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(R.layout.fragment_home) , OnClickListener{
+class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(R.layout.fragment_home) {
     override fun getViewModel() = HomeViewModel::class.java
 
     override fun onStart() {
         super.onStart()
-        val adapter = TaskAdapter(emptyList(),this)
-        binding.myRecycler.adapter = adapter
+        val fragmentList = listOf(
+            ToDoFragment(),
+            InProgressFragment(),
+            DoneFragment(),
+        )
+        initViewPager(fragmentList,binding.homeViewPager)
     }
 
-    override fun onClickItem(itemId: Long) {
-        Log.i(TAG, "onClickItem: $itemId")
+    private fun initViewPager(fragmentsList: List<Fragment>, viewPager: ViewPager2) {
+        val standingPagerAdapterView = this.activity?.let { ViewPager(it, fragmentsList) }
+        viewPager.adapter = standingPagerAdapterView
+        viewPager.setPageTransformer(ViewPagerTransitions())
     }
 }

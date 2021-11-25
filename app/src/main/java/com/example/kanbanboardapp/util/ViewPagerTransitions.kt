@@ -1,0 +1,41 @@
+package com.example.kanbanboardapp.util
+
+import android.view.View
+import androidx.viewpager2.widget.ViewPager2
+import com.example.kanbanboardapp.util.Constant.MINUS_ONE
+import com.example.kanbanboardapp.util.Constant.MIN_ALPHA_VIEW_PAGER
+import com.example.kanbanboardapp.util.Constant.MIN_SCALE_VIEW_PAGER
+import com.example.kanbanboardapp.util.Constant.ONE
+import com.example.kanbanboardapp.util.Constant.TWO
+import com.example.kanbanboardapp.util.Constant.ZERO
+import com.example.kanbanboardapp.util.Constant.ZERO_FLOUT
+import kotlin.math.abs
+import kotlin.math.max
+
+class ViewPagerTransitions : ViewPager2.PageTransformer {
+
+    override fun transformPage(view: View, position: Float) {
+        view.apply {
+            val pageWidth = width
+            val pageHeight = height
+            when {
+                position < MINUS_ONE -> alpha = ZERO_FLOUT
+                position <= ONE -> {
+                    val scaleFactor = max(MIN_SCALE_VIEW_PAGER, ONE - abs(position))
+                    val vertMargin = pageHeight * (ONE - scaleFactor) / TWO
+                    val horizontalMargin = pageWidth * (ONE - scaleFactor) / TWO
+                    translationX = if (position < ZERO) {
+                        horizontalMargin - vertMargin / TWO
+                    } else {
+                        horizontalMargin + vertMargin / TWO
+                    }
+                    scaleX = scaleFactor
+                    scaleY = scaleFactor
+                    alpha = (MIN_ALPHA_VIEW_PAGER +
+                            (((scaleFactor - MIN_SCALE_VIEW_PAGER) / (ONE - MIN_SCALE_VIEW_PAGER)) * (ONE - MIN_ALPHA_VIEW_PAGER)))
+                }
+                else -> alpha = ZERO_FLOUT
+            }
+        }
+    }
+}

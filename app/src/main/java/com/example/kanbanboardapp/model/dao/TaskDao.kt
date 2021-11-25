@@ -21,6 +21,6 @@ interface TaskDao {
     @Query("Select * from TABLE_TASK ORDER BY task_id DESC")
     fun getAllTask(): Observable<List<Task>>
 
-    @Query("Select * from TABLE_TASK WHERE name LIKE :contentFilter ORDER BY task_id DESC")
+    @Query("Select * from TABLE_TASK WHERE stats LIKE :contentFilter ORDER BY task_id DESC")
     fun taskFilter(contentFilter : String): Single<List<Task>>
 }
