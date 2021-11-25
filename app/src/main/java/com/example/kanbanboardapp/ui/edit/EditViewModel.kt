@@ -1,11 +1,9 @@
 package com.example.kanbanboardapp.ui.edit
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.kanbanboardapp.model.dataBase.Repository
 import com.example.kanbanboardapp.model.entity.Task
 import com.example.kanbanboardapp.ui.base.BaseViewModel
-import com.example.kanbanboardapp.util.Constant
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
@@ -29,11 +27,10 @@ class EditViewModel (private val contentDataSource: Repository, task: Task? = nu
     }
 
     private fun insertTask() {
-        taskName.value?.let {
             compositeDisposable.add(
                 contentDataSource.updateTask(
                     Task(
-                        it.trim(),
+                        task_name = taskName.value.toString().trim(),
                         task_title = taskTitle.value.toString().trim(),
                         task_description = taskDescription.value.toString().trim(),
                         task_type = taskType.value.toString().trim(),
@@ -49,14 +46,5 @@ class EditViewModel (private val contentDataSource: Repository, task: Task? = nu
                         this::onError
                     )
             )
-        }
-    }
-
-    private fun onSuccess() {
-        Log.d(Constant.TAG, "onComplete inserted successfully")
-    }
-
-    private fun onError(error: Throwable) {
-        Log.e(Constant.TAG, "Insert Error : ${error.message}")
     }
 }

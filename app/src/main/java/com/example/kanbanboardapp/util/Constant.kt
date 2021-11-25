@@ -12,5 +12,5 @@ object Constant {
     const val MIN_ALPHA_VIEW_PAGER = 0.5f
     const val IN_PROGRESS = "IN_PROGRESS"
     const val DONE = "DONE"
-    const val TODO = "TODO"
+    const val TO_DO = "TODO"
 }

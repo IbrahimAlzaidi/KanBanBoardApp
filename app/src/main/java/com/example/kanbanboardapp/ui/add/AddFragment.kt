@@ -1,6 +1,5 @@
 package com.example.kanbanboardapp.ui.add
 
-import androidx.lifecycle.Observer
 import com.example.kanbanboardapp.R
 import com.example.kanbanboardapp.databinding.FragmentAddBinding
 import com.example.kanbanboardapp.ui.base.BaseFragment
