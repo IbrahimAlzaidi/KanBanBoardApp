@@ -31,13 +31,13 @@ class EditViewModel (private val contentDataSource: Repository, task: Task? = nu
     private fun insertTask() {
         taskName.value?.let {
             compositeDisposable.add(
-                contentDataSource.updateToDoTask(
-                    ToDoTask(
+                contentDataSource.updateTask(
+                    Task(
                         it.trim(),
                         task_title = taskTitle.value.toString().trim(),
                         task_description = taskDescription.value.toString().trim(),
                         task_type = taskType.value.toString().trim(),
-                        task_stats = true,
+                        task_stats = "ToDo",
                         task_startDate = Date(),
                         task_endDate = Date(),
                     )

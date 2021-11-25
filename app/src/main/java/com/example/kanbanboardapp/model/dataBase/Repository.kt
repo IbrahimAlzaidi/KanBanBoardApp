@@ -28,4 +28,8 @@ class Repository(private val dateSource: KanBanDatabase) : TaskDao {
     override fun taskFilter(contentFilter: String): Single<List<Task>> {
         return dateSource.taskDao().taskFilter(contentFilter)
     }
+
+    override fun taskProgressFilter(progress: String): Observable<List<Task>> {
+        return dateSource.taskDao().taskProgressFilter(progress)
+    }
 }

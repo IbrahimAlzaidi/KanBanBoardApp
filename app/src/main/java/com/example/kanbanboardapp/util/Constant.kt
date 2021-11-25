@@ -10,4 +10,7 @@ object Constant {
     const val TWO = 2
     const val MIN_SCALE_VIEW_PAGER = 0.85f
     const val MIN_ALPHA_VIEW_PAGER = 0.5f
+    const val IN_PROGRESS = "IN_PROGRESS"
+    const val DONE = "DONE"
+    const val TODO = "TODO"
 }

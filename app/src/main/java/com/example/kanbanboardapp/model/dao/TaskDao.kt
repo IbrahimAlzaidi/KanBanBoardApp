@@ -23,4 +23,7 @@ interface TaskDao {
 
     @Query("Select * from TABLE_TASK WHERE stats LIKE :contentFilter ORDER BY task_id DESC")
     fun taskFilter(contentFilter : String): Single<List<Task>>
+
+    @Query("Select * from TABLE_TASK WHERE stats LIKE :progress ORDER BY task_id DESC")
+    fun taskProgressFilter(progress : String): Observable<List<Task>>
 }

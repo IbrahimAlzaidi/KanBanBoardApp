@@ -5,6 +5,5 @@ import com.example.kanbanboardapp.model.entity.Task
 import com.example.kanbanboardapp.ui.base.BaseAdapter
 import com.example.kanbanboardapp.util.OnClickListener
 
-class TaskAdapter(items: List<Task>, listener: OnClickListener) :
-    BaseAdapter<Task>(items, listener, R.layout.task_item) {
-}
+class TaskAdapter(items: List<Task>, listener: OnClickListener?) :
+    BaseAdapter<Task>(items, listener, R.layout.task_item)

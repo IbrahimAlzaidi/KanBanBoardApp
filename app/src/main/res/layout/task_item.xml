@@ -108,13 +108,13 @@
             tools:text="Task Description" />
 
         <Button
+            android:id="@+id/button_pick_color"
             android:layout_width="50dp"
             android:layout_height="40dp"
-            android:onClick="@{()->listener.onClickItem(item.task_id)}"
+            android:onClick="@{()->listener.onClickItem(item)}"
             app:layout_constraintEnd_toEndOf="@id/taskHolder"
             app:layout_constraintTop_toTopOf="@id/taskHolder"
             />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -14,7 +14,7 @@ import com.example.kanbanboardapp.util.OnClickListener
 
 abstract class BaseAdapter<T>(
     private var items: List<T>,
-    private var listener: OnClickListener,
+    private var listener: OnClickListener?,
     private val layoutId: Int,
 ) : RecyclerView.Adapter<BaseAdapter.BaseViewHolder>() {
 
