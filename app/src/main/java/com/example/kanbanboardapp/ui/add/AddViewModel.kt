@@ -1,6 +1,5 @@
 package com.example.kanbanboardapp.ui.add
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.kanbanboardapp.model.dataBase.Repository
 import com.example.kanbanboardapp.model.entity.Task
@@ -45,13 +44,5 @@ class AddViewModel(private val contentDataSource: Repository) : BaseViewModel() 
                 )
         )
 
-    }
-
-    private fun onSuccess() {
-        Log.d(Constant.TAG, "onComplete inserted successfully")
-    }
-
-    private fun onError(error: Throwable) {
-        Log.e(Constant.TAG, "Insert Error : ${error.message}")
     }
 }

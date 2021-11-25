@@ -27,7 +27,6 @@ abstract class BaseAdapter<T>(
                 false
             )
         )
-
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val current = items[position]
         when (holder) {

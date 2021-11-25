@@ -9,7 +9,6 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel>(R.layout.frag
 
     override fun onStart() {
         super.onStart()
-
         binding.button.setOnClickListener {
             if (!(viewModel.isValid())) {
                 viewModel.insertTask()
