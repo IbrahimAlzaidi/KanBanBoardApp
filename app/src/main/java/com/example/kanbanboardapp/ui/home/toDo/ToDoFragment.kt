@@ -11,7 +11,7 @@ class ToDoFragment : BaseFragment<FragmentToDoBinding, ToDoViewModel>(R.layout.f
 
     override fun onStart() {
         super.onStart()
-        val adapter = TaskAdapter(emptyList(),viewModel)
+        val adapter = TaskAdapter(emptyList(),viewModel,null)
         binding.myRecycler.adapter = adapter
 
         binding.addButton.setOnClickListener {

@@ -10,8 +10,12 @@
             type="com.example.kanbanboardapp.model.entity.Task" />
 
         <variable
-            name="listener"
-            type="com.example.kanbanboardapp.util.OnClickListener" />
+            name="deleteListener"
+            type="com.example.kanbanboardapp.util.OnDeleteItemListener" />
+
+        <variable
+            name="transListener"
+            type="com.example.kanbanboardapp.util.OnTransItemListener" />
 
     </data>
 
@@ -111,9 +115,17 @@
             android:id="@+id/button_pick_color"
             android:layout_width="50dp"
             android:layout_height="40dp"
-            android:onClick="@{()->listener.onClickItem(item)}"
+            android:onClick="@{()->deleteListener.onDeleteItem(item)}"
             app:layout_constraintEnd_toEndOf="@id/taskHolder"
             app:layout_constraintTop_toTopOf="@id/taskHolder"
+            />
+        <Button
+            android:id="@+id/button_trans"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:onClick="@{()->transListener.onTransItem(item)}"
+            app:layout_constraintEnd_toEndOf="@id/taskHolder"
+            app:layout_constraintTop_toBottomOf="@id/button_pick_color"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

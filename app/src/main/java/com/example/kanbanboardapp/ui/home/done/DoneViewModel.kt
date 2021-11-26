@@ -6,13 +6,17 @@ import com.example.kanbanboardapp.model.entity.Task
 import com.example.kanbanboardapp.ui.base.BaseViewModelDelete
 import com.example.kanbanboardapp.util.Constant.DONE
 import com.example.kanbanboardapp.util.Constant.TAG
-import com.example.kanbanboardapp.util.OnClickListener
+import com.example.kanbanboardapp.util.OnDeleteItemListener
 
-class DoneViewModel(private val contentDataSource: Repository) : BaseViewModelDelete(), OnClickListener {
+class DoneViewModel(private val contentDataSource: Repository) : BaseViewModelDelete(), OnDeleteItemListener {
 
-    override fun onClickItem(task: Task) {
-        Log.e(TAG, "onClickItemToDoViewModel :${task.task_name}")
-        deleteTask(task,contentDataSource)
+    override fun onDeleteItem(task: Task?) {
+        if (task != null) {
+            Log.e(TAG, "onClickItemToDoViewModel :${task.task_name}")
+        }
+        if (task != null) {
+            deleteTask(task,contentDataSource)
+        }
     }
     init {
         getTask(DONE,contentDataSource)

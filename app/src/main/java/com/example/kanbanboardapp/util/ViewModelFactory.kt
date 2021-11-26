@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.kanbanboardapp.model.dataBase.Repository
 import com.example.kanbanboardapp.ui.add.AddViewModel
+import com.example.kanbanboardapp.ui.edit.EditViewModel
 import com.example.kanbanboardapp.ui.home.done.DoneViewModel
 import com.example.kanbanboardapp.ui.home.HomeViewModel
 import com.example.kanbanboardapp.ui.home.inProgress.InProgressViewModel
@@ -19,6 +20,7 @@ class ViewModelFactory(private val contentDataSource: Repository) :
             modelClass.isAssignableFrom(InProgressViewModel::class.java) -> InProgressViewModel(contentDataSource) as T
             modelClass.isAssignableFrom(DoneViewModel::class.java) -> DoneViewModel(contentDataSource) as T
             modelClass.isAssignableFrom(AddViewModel::class.java) -> AddViewModel(contentDataSource) as T
+            modelClass.isAssignableFrom(EditViewModel::class.java) -> EditViewModel(contentDataSource) as T
             else -> throw IllegalArgumentException("Unknown viewModel")
         }
     }

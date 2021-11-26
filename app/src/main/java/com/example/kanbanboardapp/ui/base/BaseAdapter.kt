@@ -9,12 +9,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kanbanboardapp.BR
 import com.example.kanbanboardapp.util.DiffUtilAdapter
-import com.example.kanbanboardapp.util.OnClickListener
+import com.example.kanbanboardapp.util.OnDeleteItemListener
+import com.example.kanbanboardapp.util.OnTransItemListener
 
 
 abstract class BaseAdapter<T>(
     private var items: List<T>,
-    private var listener: OnClickListener?,
+    private var tranListener : OnTransItemListener?,
+    private var deletedListener: OnDeleteItemListener?,
     private val layoutId: Int,
 ) : RecyclerView.Adapter<BaseAdapter.BaseViewHolder>() {
 
@@ -33,7 +35,8 @@ abstract class BaseAdapter<T>(
             is ItemViewHolder -> {
                 holder.binding.apply {
                     setVariable(BR.item,current)
-                    setVariable(BR.listener,listener)
+                    setVariable(BR.deleteListener,deletedListener)
+                    setVariable(BR.transListener,tranListener)
                 }
             }
         }

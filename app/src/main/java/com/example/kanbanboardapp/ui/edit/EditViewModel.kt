@@ -1,9 +1,11 @@
 package com.example.kanbanboardapp.ui.edit
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.kanbanboardapp.model.dataBase.Repository
 import com.example.kanbanboardapp.model.entity.Task
 import com.example.kanbanboardapp.ui.base.BaseViewModel
+import com.example.kanbanboardapp.util.Event
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
@@ -15,18 +17,28 @@ class EditViewModel (private val contentDataSource: Repository, task: Task? = nu
     val taskType = MutableLiveData<String>(task?.task_type)
     val taskName = MutableLiveData<String>(task?.task_name)
 
-    private fun isValid(): Boolean {
+    private val _navigateToDetails = MutableLiveData<Event<String>>()
+
+    val navigateToDetails : LiveData<Event<String>>
+        get() = _navigateToDetails
+
+    private fun userClicksOnButton(itemId: String) {
+        _navigateToDetails.value = Event(itemId)
+    }
+
+
+    fun isValid(): Boolean {
         return (taskName.value.toString().trim().isEmpty() ||
                 taskDescription.value.toString().trim().isEmpty())
     }
 
     fun checkTask() {
         if (!isValid()) {
-            insertTask()
+            updateTask()
         }
     }
 
-    private fun insertTask() {
+    fun updateTask() {
             compositeDisposable.add(
                 contentDataSource.updateTask(
                     Task(
@@ -37,6 +49,7 @@ class EditViewModel (private val contentDataSource: Repository, task: Task? = nu
                         task_stats = "ToDo",
                         task_startDate = Date(),
                         task_endDate = Date(),
+                        task_id = 1L
                     )
                 )
                     .subscribeOn(Schedulers.io())

@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{()->viewModel.checkTask()}"
-            android:text="Add Task"
+            android:text="Update Task"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/taskType"
             app:layout_constraintTop_toBottomOf="@id/taskType" />
