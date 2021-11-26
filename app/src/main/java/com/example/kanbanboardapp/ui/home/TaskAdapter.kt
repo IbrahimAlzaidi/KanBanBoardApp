@@ -10,5 +10,12 @@ class TaskAdapter(
     items: List<Task>,
     listener: OnDeleteItemListener?,
     transListener: OnTransItemListener?
-) :
-    BaseAdapter<Task>(items, transListener, listener, R.layout.task_item)
+) : BaseAdapter<Task>(items, transListener, listener, R.layout.task_item){
+
+    override fun areItemSame(oldItem: Task, newItem: Task): Boolean {
+        return oldItem.task_id == newItem.task_id &&
+                oldItem.task_title == newItem.task_title &&
+                oldItem.task_description == newItem.task_description &&
+                oldItem.task_stats == newItem.task_stats
+    }
+    }
