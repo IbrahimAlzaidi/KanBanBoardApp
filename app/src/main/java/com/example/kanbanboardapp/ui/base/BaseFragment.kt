@@ -16,9 +16,10 @@ import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.example.kanbanboardapp.BR
-import com.example.kanbanboardapp.util.DependencyInjection
+import com.example.kanbanboardapp.model.KanBanDatabase
 import com.example.kanbanboardapp.util.Event
 import com.example.kanbanboardapp.util.NavigationController
+import com.example.kanbanboardapp.util.ViewModelFactory
 
 abstract class BaseFragment<VDB : ViewDataBinding, VM : BaseViewModel>(
     @LayoutRes private val layoutResId: Int,
@@ -42,8 +43,9 @@ abstract class BaseFragment<VDB : ViewDataBinding, VM : BaseViewModel>(
         savedInstanceState: Bundle?,
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
-        val viewModelFactory = DependencyInjection.provideViewModelFactory(context)
-        _viewModel = ViewModelProvider(this, viewModelFactory).get(getViewModel())
+        KanBanDatabase.invoke(context?.applicationContext!!)
+        ViewModelFactory.listOfViewModels.add(getViewModel())
+        _viewModel = ViewModelProvider(this, ViewModelFactory()).get(getViewModel())
         _binding.apply {
             lifecycleOwner = this@BaseFragment.viewLifecycleOwner
             setVariable(BR.viewModel, _viewModel)

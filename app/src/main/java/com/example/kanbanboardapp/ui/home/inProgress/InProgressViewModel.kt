@@ -8,7 +8,7 @@ import com.example.kanbanboardapp.util.Constant
 import com.example.kanbanboardapp.util.Constant.IN_PROGRESS
 import com.example.kanbanboardapp.util.OnDeleteItemListener
 
-class InProgressViewModel(private val contentDataSource: Repository): BaseViewModelDelete(),OnDeleteItemListener {
+class InProgressViewModel: BaseViewModelDelete(),OnDeleteItemListener {
 
     override fun onDeleteItem(task: Task?) {
         if (task != null) {

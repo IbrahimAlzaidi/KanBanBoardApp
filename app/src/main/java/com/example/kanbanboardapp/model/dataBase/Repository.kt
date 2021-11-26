@@ -1,35 +1,24 @@
 package com.example.kanbanboardapp.model.dataBase
 
 import com.example.kanbanboardapp.model.KanBanDatabase
-import com.example.kanbanboardapp.model.dao.*
-import com.example.kanbanboardapp.model.entity.*
-import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Single
+import com.example.kanbanboardapp.model.dao.TaskDao
+import com.example.kanbanboardapp.model.entity.Task
 
-class Repository(private val dateSource: KanBanDatabase) : TaskDao {
+class Repository : TaskDao {
 
-    override fun insertTask(task: Task): Completable {
-        return dateSource.taskDao().insertTask(task)
-    }
+    private val dateSource = KanBanDatabase.getInstanceWithoutContext()
 
-    override fun updateTask(task: Task): Completable {
-        return dateSource.taskDao().updateTask(task)
-    }
+    override fun insertTask(task: Task) = dateSource.taskDao().insertTask(task)
 
-    override fun deleteTask(task: Task): Completable {
-        return dateSource.taskDao().deleteTask(task)
-    }
+    override fun updateTask(task: Task) = dateSource.taskDao().updateTask(task)
 
-    override fun getAllTask(): Observable<List<Task>> {
-        return dateSource.taskDao().getAllTask()
-    }
+    override fun deleteTask(task: Task) = dateSource.taskDao().deleteTask(task)
 
-    override fun taskFilter(contentFilter: String): Single<List<Task>> {
-        return dateSource.taskDao().taskFilter(contentFilter)
-    }
+    override fun getAllTask() = dateSource.taskDao().getAllTask()
 
-    override fun taskProgressFilter(progress: String): Observable<List<Task>> {
-        return dateSource.taskDao().taskProgressFilter(progress)
-    }
+    override fun taskFilter(contentFilter: String) = dateSource.taskDao().taskFilter(contentFilter)
+
+    override fun taskProgressFilter(progress: String) =
+        dateSource.taskDao().taskProgressFilter(progress)
+
 }

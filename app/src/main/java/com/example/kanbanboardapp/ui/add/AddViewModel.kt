@@ -9,7 +9,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
 
-class AddViewModel(private val contentDataSource: Repository) : BaseViewModel() {
+class AddViewModel : BaseViewModel() {
 
     val taskTitle = MutableLiveData<String>()
     val taskDescription = MutableLiveData<String>()

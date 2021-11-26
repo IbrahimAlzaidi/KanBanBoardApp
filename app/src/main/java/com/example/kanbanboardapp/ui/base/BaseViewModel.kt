@@ -2,12 +2,14 @@ package com.example.kanbanboardapp.ui.base
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.kanbanboardapp.model.dataBase.Repository
 import com.example.kanbanboardapp.util.Constant
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 abstract class BaseViewModel : ViewModel() {
 
     protected val compositeDisposable = CompositeDisposable()
+    protected val contentDataSource = Repository()
 
     override fun onCleared() {
         super.onCleared()

@@ -23,9 +23,11 @@ abstract class KanBanDatabase : RoomDatabase() {
         @Volatile
         private var instance: KanBanDatabase? = null
 
-        fun getInstance(context: Context): KanBanDatabase {
+        operator fun invoke(context: Context): KanBanDatabase {
             return instance ?: synchronized(this) { buildDatabase(context).also { instance = it } }
         }
+
+        fun getInstanceWithoutContext():KanBanDatabase = instance!!
 
         private fun buildDatabase(context: Context): KanBanDatabase {
             return Room.databaseBuilder(context, KanBanDatabase::class.java, DATABASE_NAME).build()

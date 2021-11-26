@@ -1,14 +1,13 @@
 package com.example.kanbanboardapp.ui.home.done
 
 import android.util.Log
-import com.example.kanbanboardapp.model.dataBase.Repository
 import com.example.kanbanboardapp.model.entity.Task
 import com.example.kanbanboardapp.ui.base.BaseViewModelDelete
 import com.example.kanbanboardapp.util.Constant.DONE
 import com.example.kanbanboardapp.util.Constant.TAG
 import com.example.kanbanboardapp.util.OnDeleteItemListener
 
-class DoneViewModel(private val contentDataSource: Repository) : BaseViewModelDelete(), OnDeleteItemListener {
+class DoneViewModel : BaseViewModelDelete(), OnDeleteItemListener {
 
     override fun onDeleteItem(task: Task?) {
         if (task != null) {
