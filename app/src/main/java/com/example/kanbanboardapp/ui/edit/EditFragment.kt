@@ -11,9 +11,10 @@ import com.example.kanbanboardapp.util.OnTransItemListener
 class EditFragment : BaseFragment<FragmentEditBinding, EditViewModel>(R.layout.fragment_edit){
     override fun getViewModel() = EditViewModel::class.java
 
-    val args : EditFragmentArgs by navArgs()
+    private val args : EditFragmentArgs by navArgs()
 
     override fun onStart() {
         super.onStart()
+        binding.viewModel = EditViewModel(args.task)
     }
 }

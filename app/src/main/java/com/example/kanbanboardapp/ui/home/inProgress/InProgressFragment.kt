@@ -23,10 +23,7 @@ class InProgressFragment :
 
     override fun onTransItem(task: Task?) {
         if (task != null) {
-            Log.i(TAG, "onTransItem: ${task.task_name}")
-        }
-        if (task != null) {
-            navigate(HomeFragmentDirections.actionHomeFragmentToEditFragment(taskId = task.task_id))
+            navigate(HomeFragmentDirections.actionHomeFragmentToEditFragment(task = task))
         }
     }
 }
