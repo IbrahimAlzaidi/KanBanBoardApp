@@ -2,7 +2,6 @@ package com.example.kanbanboardapp.ui.edit
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.kanbanboardapp.model.dataBase.Repository
 import com.example.kanbanboardapp.model.entity.Task
 import com.example.kanbanboardapp.ui.base.BaseViewModel
 import com.example.kanbanboardapp.util.Event
@@ -38,10 +37,10 @@ class EditViewModel (task: Task? = null): BaseViewModel() {
         }
     }
 
-    fun updateTask() {
+    private fun updateTask() {
             compositeDisposable.add(
                 contentDataSource.updateTask(
-                    Task(
+                    listOf(Task(
                         task_name = taskName.value.toString().trim(),
                         task_title = taskTitle.value.toString().trim(),
                         task_description = taskDescription.value.toString().trim(),
@@ -50,7 +49,7 @@ class EditViewModel (task: Task? = null): BaseViewModel() {
                         task_startDate = Date(),
                         task_endDate = Date(),
                         task_id = 1L
-                    )
+                    ))
                 )
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

@@ -5,8 +5,8 @@ import com.example.kanbanboardapp.R
 import com.example.kanbanboardapp.databinding.FragmentInProgressBinding
 import com.example.kanbanboardapp.model.entity.Task
 import com.example.kanbanboardapp.ui.base.BaseFragment
+import com.example.kanbanboardapp.ui.base.TaskAdapter
 import com.example.kanbanboardapp.ui.home.HomeFragmentDirections
-import com.example.kanbanboardapp.ui.home.TaskAdapter
 import com.example.kanbanboardapp.util.Constant.TAG
 import com.example.kanbanboardapp.util.OnTransItemListener
 
@@ -17,7 +17,11 @@ class InProgressFragment :
 
     override fun onStart() {
         super.onStart()
-        val adapter = TaskAdapter(emptyList(), viewModel, this,viewModel)
+        val adapter = TaskAdapter(
+            items = emptyList(),
+            deletedListener = viewModel,
+            itemPosition = viewModel,
+        )
         binding.myRecycler.adapter = adapter
     }
 

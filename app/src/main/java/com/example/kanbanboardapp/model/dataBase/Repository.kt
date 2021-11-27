@@ -10,7 +10,7 @@ class Repository : TaskDao {
 
     override fun insertTask(task: Task) = dateSource.taskDao().insertTask(task)
 
-    override fun updateTask(task: Task) = dateSource.taskDao().updateTask(task)
+    override fun updateTask(task: List<Task>) = dateSource.taskDao().updateTask(task)
 
     override fun deleteTask(task: Task) = dateSource.taskDao().deleteTask(task)
 
@@ -21,4 +21,6 @@ class Repository : TaskDao {
     override fun taskProgressFilter(progress: String) =
         dateSource.taskDao().taskProgressFilter(progress)
 
+    override fun taskUpdate(taskStats: String, id: Long) =
+        dateSource.taskDao().taskUpdate(taskStats, id)
 }

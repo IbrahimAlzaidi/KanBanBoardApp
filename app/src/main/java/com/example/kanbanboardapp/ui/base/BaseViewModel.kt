@@ -4,7 +4,10 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.kanbanboardapp.model.dataBase.Repository
 import com.example.kanbanboardapp.util.Constant
+import io.reactivex.rxjava3.annotations.NonNull
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.functions.Action
+import io.reactivex.rxjava3.functions.Consumer
 
 abstract class BaseViewModel : ViewModel() {
 
@@ -19,7 +22,7 @@ abstract class BaseViewModel : ViewModel() {
         Log.d(Constant.TAG, "onComplete inserted successfully")
     }
 
-    protected fun onError(error: Throwable) {
+    protected fun onError(error: Throwable){
         Log.e(Constant.TAG, "Insert Error : ${error.message}")
     }
 }
