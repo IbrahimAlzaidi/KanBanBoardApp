@@ -1,10 +1,9 @@
 package com.example.kanbanboardapp.ui.add
 
 import androidx.lifecycle.MutableLiveData
-import com.example.kanbanboardapp.model.dataBase.Repository
 import com.example.kanbanboardapp.model.entity.Task
 import com.example.kanbanboardapp.ui.base.BaseViewModel
-import com.example.kanbanboardapp.util.Constant
+import com.example.kanbanboardapp.util.Constant.TO_DO
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
@@ -31,7 +30,7 @@ class AddViewModel : BaseViewModel() {
                     task_title = taskTitle.value.toString().trim(),
                     task_description = taskDescription.value.toString().trim(),
                     task_type = taskType.value.toString().trim(),
-                    task_stats = Constant.IN_PROGRESS,
+                    task_stats = TO_DO,
                     task_startDate = Date(),
                     task_endDate = Date(),
                 )

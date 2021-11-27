@@ -7,17 +7,17 @@ import com.example.kanbanboardapp.util.Constant
 import com.example.kanbanboardapp.util.Constant.TO_DO
 import com.example.kanbanboardapp.util.OnDeleteItemListener
 
-class ToDoViewModel : BaseViewModelDelete(), OnDeleteItemListener {
+class ToDoViewModel : BaseViewModelDelete(), OnDeleteItemListener  {
 
     override fun onDeleteItem(task: Task?) {
         if (task != null) {
             Log.e(Constant.TAG, "onClickItemToDoViewModel :${task.task_name}")
         }
         if (task != null) {
-            deleteTask(task,contentDataSource)
+            deleteTask(task)
         }
     }
     init {
-        getTask(TO_DO,contentDataSource)
+        getTask(TO_DO)
     }
 }

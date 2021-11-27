@@ -10,14 +10,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kanbanboardapp.BR
 import com.example.kanbanboardapp.util.DiffUtilAdapter
 import com.example.kanbanboardapp.util.OnDeleteItemListener
+import com.example.kanbanboardapp.util.OnPositionItemListener
 import com.example.kanbanboardapp.util.OnTransItemListener
 
 
 abstract class BaseAdapter<T>(
     private var items: List<T>,
-    private var tranListener : OnTransItemListener?,
+    private var tranListener: OnTransItemListener?,
     private var deletedListener: OnDeleteItemListener?,
     private val layoutId: Int,
+    private val itemPosition: OnPositionItemListener?,
 ) : RecyclerView.Adapter<BaseAdapter.BaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder =
@@ -37,6 +39,7 @@ abstract class BaseAdapter<T>(
                     setVariable(BR.item,current)
                     setVariable(BR.deleteListener,deletedListener)
                     setVariable(BR.transListener,tranListener)
+                    setVariable(BR.positionListener,itemPosition)
                 }
             }
         }
@@ -45,7 +48,7 @@ abstract class BaseAdapter<T>(
     override fun getItemViewType(position: Int) = position
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setItems(view: RecyclerView, newItems: List<T>) {
+    fun setItems(newItems: List<T>) {
         val diffUtilResult = DiffUtil.calculateDiff(
             DiffUtilAdapter(items, newItems) { oldItemList, newItemList ->
                 areItemSame(

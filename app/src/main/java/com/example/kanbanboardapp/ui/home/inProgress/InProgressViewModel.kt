@@ -1,7 +1,6 @@
 package com.example.kanbanboardapp.ui.home.inProgress
 
 import android.util.Log
-import com.example.kanbanboardapp.model.dataBase.Repository
 import com.example.kanbanboardapp.model.entity.Task
 import com.example.kanbanboardapp.ui.base.BaseViewModelDelete
 import com.example.kanbanboardapp.util.Constant
@@ -15,10 +14,10 @@ class InProgressViewModel: BaseViewModelDelete(),OnDeleteItemListener {
             Log.e(Constant.TAG, "onClickItemToDoViewModel :${task.task_name}")
         }
         if (task != null) {
-            deleteTask(task,contentDataSource)
+            deleteTask(task)
         }
     }
     init {
-        getTask(IN_PROGRESS,contentDataSource)
+        getTask(IN_PROGRESS)
     }
 }

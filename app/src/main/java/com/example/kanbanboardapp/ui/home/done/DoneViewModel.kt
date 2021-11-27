@@ -6,6 +6,7 @@ import com.example.kanbanboardapp.ui.base.BaseViewModelDelete
 import com.example.kanbanboardapp.util.Constant.DONE
 import com.example.kanbanboardapp.util.Constant.TAG
 import com.example.kanbanboardapp.util.OnDeleteItemListener
+import com.example.kanbanboardapp.util.OnPositionItemListener
 
 class DoneViewModel : BaseViewModelDelete(), OnDeleteItemListener {
 
@@ -14,10 +15,10 @@ class DoneViewModel : BaseViewModelDelete(), OnDeleteItemListener {
             Log.e(TAG, "onClickItemToDoViewModel :${task.task_name}")
         }
         if (task != null) {
-            deleteTask(task,contentDataSource)
+            deleteTask(task)
         }
     }
     init {
-        getTask(DONE,contentDataSource)
+        getTask(DONE)
     }
 }

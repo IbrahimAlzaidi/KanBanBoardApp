@@ -17,6 +17,10 @@
             name="transListener"
             type="com.example.kanbanboardapp.util.OnTransItemListener" />
 
+        <variable
+            name="positionListener"
+            type="com.example.kanbanboardapp.util.OnPositionItemListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_margin="18dp"
+            android:elevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -127,6 +132,30 @@
             app:layout_constraintEnd_toEndOf="@id/taskHolder"
             app:layout_constraintTop_toBottomOf="@id/button_pick_color"
             />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_spinner"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:elevation="4dp"
+            app:boxBackgroundColor="#C868E0F8"
+            app:customAdapterSpinner="@{item.task_stats}"
+            app:layout_constraintEnd_toStartOf="@id/button_trans"
+            app:layout_constraintTop_toTopOf="@id/taskHolder"
+            app:placeholderText="TODO"
+            app:placeholderTextColor="@color/black">
+
+            <AutoCompleteTextView
+                android:id="@+id/set_input_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#C868E0F8"
+                android:onItemSelected="@{(parent,view,pos,id)-> positionListener.onPositionItem(pos,item)}"
+                android:inputType="none"
+                android:textColor="@color/black"
+                tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -17,7 +17,7 @@ class InProgressFragment :
 
     override fun onStart() {
         super.onStart()
-        val adapter = TaskAdapter(emptyList(), viewModel, this)
+        val adapter = TaskAdapter(emptyList(), viewModel, this,viewModel)
         binding.myRecycler.adapter = adapter
     }
 

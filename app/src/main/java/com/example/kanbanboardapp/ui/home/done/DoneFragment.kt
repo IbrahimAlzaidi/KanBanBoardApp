@@ -10,7 +10,7 @@ class DoneFragment : BaseFragment<FragmentDoneBinding, DoneViewModel>(R.layout.f
 
     override fun onStart() {
         super.onStart()
-        val adapter = TaskAdapter(emptyList(),viewModel,null)
+        val adapter = TaskAdapter(emptyList(),viewModel,null,viewModel)
         binding.myRecycler.adapter = adapter
     }
 }
