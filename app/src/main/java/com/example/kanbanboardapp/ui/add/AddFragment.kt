@@ -1,8 +1,14 @@
 package com.example.kanbanboardapp.ui.add
 
+import android.os.Handler
+import android.util.Log
 import com.example.kanbanboardapp.R
 import com.example.kanbanboardapp.databinding.FragmentAddBinding
 import com.example.kanbanboardapp.ui.base.BaseFragment
+import androidx.lifecycle.ViewModel
+
+
+
 
 class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel>(R.layout.fragment_add) {
     override fun getViewModel() = AddViewModel::class.java
@@ -15,5 +21,10 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel>(R.layout.frag
                 navigate(AddFragmentDirections.actionAddFragmentToHomeFragment())
             }
         }
+        binding.viewModel.taskType.observe(this,{
+            var a = it
+            Log.i("ADD ViewFragment", "onStart: $a")
+        })
+
     }
 }

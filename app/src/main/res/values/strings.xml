@@ -2,4 +2,12 @@
     <string name="app_name">KanBanBoardApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="type">
+        <item>10 Guy</item>
+        <item>1950s Middle Finger</item>
+        <item>1990s First World Problems</item>
+        <item>1st World Canadian Problems</item>
+        <item>2nd Term Obama</item>
+    </string-array>
 </resources>

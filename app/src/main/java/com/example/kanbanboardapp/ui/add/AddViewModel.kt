@@ -1,5 +1,6 @@
 package com.example.kanbanboardapp.ui.add
 
+import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import com.example.kanbanboardapp.model.dataBase.Repository
 import com.example.kanbanboardapp.model.entity.Task
@@ -30,7 +31,7 @@ class AddViewModel : BaseViewModel() {
                     task_name = taskName.value.toString().trim(),
                     task_title = taskTitle.value.toString().trim(),
                     task_description = taskDescription.value.toString().trim(),
-                    task_type = taskType.value.toString().trim(),
+                    task_type = taskType.value.toString(),
                     task_stats = Constant.IN_PROGRESS,
                     task_startDate = Date(),
                     task_endDate = Date(),

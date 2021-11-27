@@ -50,14 +50,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/taskTitle" />
 
-        <EditText
+        <Spinner
             android:id="@+id/taskType"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:hint="Enter Task Type"
-            android:inputType="text"
-            android:text="@={viewModel.taskType}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:entries="@array/type"
+            selectedValue="@={viewModel.taskType}"
             app:layout_constraintEnd_toEndOf="@+id/taskDescription"
             app:layout_constraintStart_toStartOf="@+id/taskDescription"
             app:layout_constraintTop_toBottomOf="@id/taskDescription" />
