@@ -31,7 +31,8 @@
             android:id="@+id/action_editFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
         <argument
-            android:name="task_id"
-            app:argType="long" />
+            android:name="task"
+            app:argType="com.example.kanbanboardapp.model.entity.Task"
+            app:nullable="true" />
     </fragment>
 </navigation>
