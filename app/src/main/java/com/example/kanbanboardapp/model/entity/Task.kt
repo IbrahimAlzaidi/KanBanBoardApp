@@ -1,7 +1,6 @@
 package com.example.kanbanboardapp.model.entity
 
 import android.os.Parcelable
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -20,4 +19,3 @@ data class Task(
     @ColumnInfo(name = "endDate") val task_endDate : Date,
     @PrimaryKey(autoGenerate = true) val task_id : Long = 0,
     ): Parcelable
-//@NonNull

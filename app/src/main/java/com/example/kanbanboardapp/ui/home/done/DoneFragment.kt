@@ -18,13 +18,12 @@ class DoneFragment : BaseFragment<FragmentDoneBinding, DoneViewModel>(R.layout.f
             items = emptyList(),
             deletedListener = viewModel,
             itemPosition = viewModel,
+            tranListener = this
         )
         binding.myRecycler.adapter = adapter
     }
 
     override fun onTransItem(task: Task?) {
-        if (task != null) {
             navigate(HomeFragmentDirections.actionHomeFragmentToEditFragment(task))
-        }
     }
 }

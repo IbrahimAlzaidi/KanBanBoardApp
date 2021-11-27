@@ -14,32 +14,17 @@ class EditViewModel(val task: Task? = null) : BaseViewModel() {
     val taskType = MutableLiveData<String>(task?.task_type)
     val taskName = MutableLiveData<String>(task?.task_name)
 
-//    private val _navigateToDetails = MutableLiveData<Event<String>>()
-//
-//    val navigateToDetails : LiveData<Event<String>>
-//        get() = _navigateToDetails
-//
-//    private fun userClicksOnButton(itemId: String) {
-//        _navigateToDetails.value = Event(itemId)
-//    }
 
-
-    private fun isValid(): Boolean {
+    fun isValid(): Boolean {
         return (taskName.value.toString().trim().isEmpty() ||
                 taskDescription.value.toString().trim().isEmpty())
     }
 
-    fun checkTask() {
-        if (!isValid()) {
-            updateTask()
-        }
-    }
-
-    fun updateTask() {
+     fun updateTask() {
         if (task?.task_id != null) {
             compositeDisposable.add(
                 contentDataSource.updateTask(
-                    Task(
+                    listOf(Task(
                         task_name = taskName.value.toString().trim(),
                         task_title = taskTitle.value.toString().trim(),
                         task_description = taskDescription.value.toString().trim(),
@@ -48,6 +33,7 @@ class EditViewModel(val task: Task? = null) : BaseViewModel() {
                         task_startDate = Date(),
                         task_endDate = Date(),
                         task_id = task.task_id
+                    )
                     )
                 )
                     .subscribeOn(Schedulers.io())
