@@ -66,4 +66,6 @@ dependencies {
 
     //androidx Extension for RxJava3
     implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
+
+    implementation 'com.github.Devlight:CornerCutLinearLayout:1.0.5'
 }

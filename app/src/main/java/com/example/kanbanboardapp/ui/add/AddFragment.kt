@@ -1,5 +1,8 @@
 package com.example.kanbanboardapp.ui.add
 
+import androidx.navigation.NavOptions
+import androidx.navigation.NavOptionsBuilder
+import androidx.navigation.fragment.findNavController
 import com.example.kanbanboardapp.R
 import com.example.kanbanboardapp.databinding.FragmentAddBinding
 import com.example.kanbanboardapp.ui.base.BaseFragment
@@ -9,11 +12,16 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel>(R.layout.frag
 
     override fun onStart() {
         super.onStart()
-        binding.button.setOnClickListener {
+        binding.addButton.setOnClickListener {
             if (!(viewModel.isValid())) {
                 viewModel.insertTask()
-                navigate(AddFragmentDirections.actionAddFragmentToHomeFragment())
+                findNavController().navigate(
+                    R.id.homeFragment,
+                    null,
+                    NavOptions.Builder().setPopUpTo(R.id.addFragment,true).build()
+                )
             }
         }
     }
+
 }
