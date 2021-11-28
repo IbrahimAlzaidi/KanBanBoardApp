@@ -4,7 +4,7 @@ import com.example.kanbanboardapp.R
 import com.example.kanbanboardapp.databinding.FragmentDoneBinding
 import com.example.kanbanboardapp.model.entity.Task
 import com.example.kanbanboardapp.ui.base.BaseFragment
-import com.example.kanbanboardapp.ui.base.TaskAdapter
+import com.example.kanbanboardapp.ui.home.TaskAdapter
 import com.example.kanbanboardapp.ui.home.HomeFragmentDirections
 import com.example.kanbanboardapp.util.OnTransItemListener
 

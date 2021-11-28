@@ -7,7 +7,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
 
-class EditViewModel(val task: Task? = null) : BaseViewModel() {
+class EditViewModel(private val task: Task? = null) : BaseViewModel() {
 
     val taskTitle = MutableLiveData<String>(task?.task_title)
     val taskDescription = MutableLiveData<String>(task?.task_description)
@@ -16,24 +16,24 @@ class EditViewModel(val task: Task? = null) : BaseViewModel() {
 
 
     fun isValid(): Boolean {
-        return (taskName.value.toString().trim().isEmpty() ||
-                taskDescription.value.toString().trim().isEmpty())
+        return taskTitle.value != null
     }
 
-     fun updateTask() {
-        if (task?.task_id != null) {
+    fun updateTask() {
             compositeDisposable.add(
                 contentDataSource.updateTask(
-                    listOf(Task(
-                        task_name = taskName.value.toString().trim(),
-                        task_title = taskTitle.value.toString().trim(),
-                        task_description = taskDescription.value.toString().trim(),
-                        task_type = taskType.value.toString().trim(),
-                        task_stats = "ToDo",
-                        task_startDate = Date(),
-                        task_endDate = Date(),
-                        task_id = task.task_id
-                    )
+                    listOf(task?.let {
+                        Task(
+                            task_name = taskName.value?.trim(),
+                            task_title = taskTitle.value?.trim(),
+                            task_description = taskDescription.value?.trim(),
+                            task_type = taskType.value?.trim(),
+                            task_stats = task.task_stats,
+                            task_startDate = Date(),
+                            task_endDate = Date(),
+                            task_id = it.task_id
+                        )
+                    }
                     )
                 )
                     .subscribeOn(Schedulers.io())
@@ -44,5 +44,5 @@ class EditViewModel(val task: Task? = null) : BaseViewModel() {
                     )
             )
         }
-    }
+
 }

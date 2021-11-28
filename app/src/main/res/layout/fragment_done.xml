@@ -14,13 +14,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.home.done.DoneFragment">
-
         <TextView
             android:id="@+id/to_do_text"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Done"
-            android:textSize="38sp"
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/todo_text_background"
+            android:textSize="32sp"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView

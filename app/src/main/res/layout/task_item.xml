@@ -27,13 +27,13 @@
         android:id="@+id/ccll_kotlin_synthetic_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
+        android:background="#B4DCF5"
         android:orientation="vertical"
         app:ccll_corner_cut_flag="start_top|end_bottom"
         app:ccll_corner_cut_size="24dp"
         app:ccll_corner_cut_type="oval"
         app:ccll_child_corner_cut_type="rectangle_inverse"
-        app:ccll_custom_shadow_color="#86A5D1"
+        app:ccll_custom_shadow_color="#0A2FCF"
         app:ccll_custom_shadow_radius="16dp">
         <TextView
             android:layout_width="wrap_content"
@@ -64,7 +64,6 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
                 android:onClick="@{()->deleteListener.onDeleteItem(item)}"
-                android:src="@drawable/ic_baseline_delete_forever_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 >
@@ -90,7 +89,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="4dp"
-                    android:src="@drawable/ic_baseline_update_24"
+                    android:src="@drawable/ic_twotone_edit_24"
                     />
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -108,7 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="4dp"
-                    android:src="@drawable/ic_baseline_transform_24"
+                    android:src="@drawable/ic_move_task"
                     />
             </androidx.cardview.widget.CardView>
 

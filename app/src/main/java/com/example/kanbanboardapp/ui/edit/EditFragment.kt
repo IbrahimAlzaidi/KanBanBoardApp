@@ -1,7 +1,5 @@
 package com.example.kanbanboardapp.ui.edit
 
-import androidx.navigation.NavOptions
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.kanbanboardapp.R
 import com.example.kanbanboardapp.databinding.FragmentEditBinding
@@ -19,13 +17,9 @@ class EditFragment : BaseFragment<FragmentEditBinding, EditViewModel>(R.layout.f
             viewModel = viewModels
             lifecycleOwner = this@EditFragment
             updateButton.setOnClickListener {
-                if (!(viewModels.isValid())) {
+                if (viewModels.isValid()) {
                     viewModels.updateTask()
-                    findNavController().navigate(
-                        R.id.homeFragment,
-                        null,
-                        NavOptions.Builder().setPopUpTo(R.id.editFragment,true).build()
-                    )
+                    navigate(EditFragmentDirections.actionEditFragmentToHomeFragment())
                 }
             }
         }

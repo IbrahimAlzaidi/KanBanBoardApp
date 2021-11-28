@@ -1,4 +1,4 @@
-package com.example.kanbanboardapp.ui.base
+package com.example.kanbanboardapp.ui.home
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -65,8 +65,6 @@ class TaskAdapter(
     }
 
     override fun getItemCount() = items.size
-
-    fun getItems() = items
 
     class ItemViewHolder(viewItem: View) : RecyclerView.ViewHolder(viewItem) {
         val binding = TaskItemBinding.bind(viewItem)

@@ -10,26 +10,24 @@ import java.util.*
 
 class AddViewModel : BaseViewModel() {
 
-    val taskTitle = MutableLiveData<String>()
-    val taskDescription = MutableLiveData<String>()
-    val taskType = MutableLiveData<String>()
-    val taskName = MutableLiveData<String>()
+    val taskTitle = MutableLiveData<String?>()
+    val taskDescription = MutableLiveData<String?>()
+    val taskType = MutableLiveData<String?>()
+    val taskName = MutableLiveData<String?>()
 
 
     fun isValid(): Boolean {
-        return (taskName.value.toString().trim().isEmpty() ||
-                taskDescription.value.toString().trim().isEmpty())
+        return taskTitle.value != null
     }
-
 
     fun insertTask() {
         compositeDisposable.add(
             contentDataSource.insertTask(
                 Task(
-                    task_name = taskName.value.toString().trim(),
-                    task_title = taskTitle.value.toString().trim(),
-                    task_description = taskDescription.value.toString().trim(),
-                    task_type = taskType.value.toString().trim(),
+                    task_name = taskName.value,
+                    task_title = taskTitle.value,
+                    task_description = taskDescription.value,
+                    task_type = taskType.value,
                     task_stats = TO_DO,
                     task_startDate = Date(),
                     task_endDate = Date(),
